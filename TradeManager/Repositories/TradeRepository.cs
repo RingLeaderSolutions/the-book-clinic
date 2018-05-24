@@ -1,13 +1,15 @@
+using TradeManager.Domain;
+
 namespace TradeManager.Repositories
 {
     internal class TradeRepository
     {
-        public string[] GetTrades()
+        public Trade[] GetTrades()
         {
             return new[] {
-                "Trade1",
-                "Trade2",
-                "Trade3"
+                new Trade { Name= "Trade1"},
+                new Trade { Name= "Trade2"},
+                new Trade { Name= "Trade3" }
             };
         }
     }

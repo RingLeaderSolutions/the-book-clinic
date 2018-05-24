@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Autofac;
 using TradeManager.Services;
 
@@ -7,6 +8,12 @@ namespace TradeManager
     class Program
     {
         static void Main()
+        {
+            MainAsync().GetAwaiter().GetResult();
+        }
+
+
+        static async Task MainAsync()
         {
             var container = Initialise();
 
@@ -21,11 +28,11 @@ namespace TradeManager
                 {
                     if (!string.IsNullOrEmpty(tradeName))
                     {
-                        tradeService.AcceptTrade(tradeName);
+                        await tradeService.AcceptTrade(tradeName);
                     }
 
                     tradeName = Console.ReadLine();
-                } 
+                }
 
                 Environment.Exit(0);
             }

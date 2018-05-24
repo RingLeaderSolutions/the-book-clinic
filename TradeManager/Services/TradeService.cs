@@ -1,6 +1,8 @@
 using System;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
+using TradeManager.Domain;
 using TradeManager.Repositories;
 
 namespace TradeManager.Services
@@ -15,32 +17,38 @@ namespace TradeManager.Services
         }
 
 
-        public void ShowTrades()
+        public async Task<bool> AcceptTrade(string tradeName)
         {
-            var trades = _tradeRepository.GetTrades();
-            Console.WriteLine($"The following trades are ready for acceptance: {string.Join(", ", trades)}");
-        }
+            var trade = FindTrade(tradeName);
 
+            if (!IsTradeValid(trade, tradeName)) return false;
 
-        public bool AcceptTrade(string tradeName)
-        {
-            if (!IsTradeValid(tradeName)) return false;
+            var enrichedTrade = EnrichTrade(tradeName);
 
-            EnrichTrade(tradeName);
+            var price = RequestPrice(enrichedTrade);
 
-            RequestPrice(tradeName);
-
-            AddTradeToRms(tradeName);
+            AddTradeToRms(enrichedTrade, price);
 
             Console.WriteLine($"Trade '{tradeName}' is now been accepted.");
             return true;
         }
 
 
-        private bool IsTradeValid(string tradeName)
+        private Trade FindTrade(string tradeName)
         {
-            var trade = _tradeRepository.GetTrades().SingleOrDefault(t => t == tradeName);
+            return _tradeRepository.GetTrades().SingleOrDefault(t => t.Name == tradeName);
+        }
 
+
+        public void ShowTrades()
+        {
+            var trades = _tradeRepository.GetTrades();
+            Console.WriteLine($"The following trades are ready for acceptance: {string.Join(", ", trades.Select(t => t.Name))}");
+        }
+
+
+        private bool IsTradeValid(Trade trade, string tradeName)
+        {
             if (trade != null) return true;
 
             Console.WriteLine($"Trade '{tradeName}' not found.");
@@ -49,23 +57,25 @@ namespace TradeManager.Services
         }
 
 
-        private void EnrichTrade(string tradeName)
+        private EnrichedTrade EnrichTrade(string tradeName)
         {
             Console.WriteLine($" - Looking for '{tradeName}' CRM.");
             Thread.Sleep(1000);
             Console.WriteLine($" - Trade '{tradeName}' has been found in Salesforce.");
+            return new EnrichedTrade();
         }
 
 
-        private void RequestPrice(string tradeName)
+        private TradePrice RequestPrice(EnrichedTrade tradeName)
         {
             Console.WriteLine($" - Price for trade '{tradeName}' has been requested.");
             Thread.Sleep(2000);
             Console.WriteLine($" - Price for trade '{tradeName}' received.");
+            return new TradePrice();
         }
 
 
-        private void AddTradeToRms(string tradeName)
+        private void AddTradeToRms(EnrichedTrade tradeName, TradePrice price)
         {
             Console.WriteLine($" - Sending '{tradeName}' to Risk Management System.");
             Thread.Sleep(1000);
