@@ -1,4 +1,5 @@
-using TradeManager.Domain;
+
+using TradeManager.Common.Domain;
 
 namespace TradeManager.Repositories
 {

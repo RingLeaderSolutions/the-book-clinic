@@ -1,4 +1,4 @@
-﻿namespace TradeManager.Domain
+﻿namespace TradeManager.Common.Domain
 {
     public class Trade
     {
