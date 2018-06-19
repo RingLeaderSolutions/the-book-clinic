@@ -3,11 +3,11 @@ using MassTransit;
 using Serilog;
 using TheBookClinic.Messaging.Commands;
 using TheBookClinic.Messaging.Events;
-using TheBookClinic.TradeManager.Events;
+using TheBookClinic.PricingService.Events;
 
-namespace TheBookClinic.TradeManager.Services
+namespace TheBookClinic.PricingService
 {
-    public class PricingService : IConsumer<IPriceRequestedCommand>
+    public class PricingServiceConsumer : IConsumer<IPriceRequestedCommand>
     {
         public async Task Consume(ConsumeContext<IPriceRequestedCommand> context)
         {

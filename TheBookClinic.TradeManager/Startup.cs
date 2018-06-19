@@ -83,14 +83,6 @@ namespace TheBookClinic.TradeManager
                         {
                             endpointConfigurator.Consumer(() => new CrmService());
                         });
-
-                    cfg.ReceiveEndpoint(
-                        host,
-                        "pricing_data",
-                        endpointConfigurator =>
-                        {
-                            endpointConfigurator.Consumer(() => new PricingService());
-                        });
                 }))
                 .As<IBus>()
                 .As<IBusControl>()

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBookClinic.Common", "The
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBookClinic.TradeManager", "TheBookClinic.TradeManager\TheBookClinic.TradeManager.csproj", "{73A583CB-8768-435A-86A1-907D4849C5F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBookClinic.PricingService", "TheBookClinic.PricingService\TheBookClinic.PricingService.csproj", "{0865C05A-29A0-4ED8-BC96-32F348E6F0C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{73A583CB-8768-435A-86A1-907D4849C5F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73A583CB-8768-435A-86A1-907D4849C5F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73A583CB-8768-435A-86A1-907D4849C5F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0865C05A-29A0-4ED8-BC96-32F348E6F0C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0865C05A-29A0-4ED8-BC96-32F348E6F0C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0865C05A-29A0-4ED8-BC96-32F348E6F0C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0865C05A-29A0-4ED8-BC96-32F348E6F0C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -148,12 +148,10 @@
   <ItemGroup>
     <Compile Include="Events\CrmDataReceivedEvent.cs" />
     <Compile Include="Events\NewTradeReceived.cs" />
-    <Compile Include="Events\PriceReceivedEvent.cs" />
     <Compile Include="JsonContentNegotiator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CrmService.cs" />
-    <Compile Include="Services\PricingService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\TradeController.cs" />
     <Compile Include="TradeManagerModule.cs" />

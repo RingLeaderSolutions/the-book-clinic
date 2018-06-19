@@ -1,6 +1,6 @@
 ﻿using TheBookClinic.Messaging.Events;
 
-namespace TheBookClinic.TradeManager.Events
+namespace TheBookClinic.PricingService.Events
 {
     public class PriceReceivedEvent : IPriceReceivedEvent
     {
