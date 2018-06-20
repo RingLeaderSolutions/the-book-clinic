@@ -82,6 +82,12 @@ namespace TheBookClinic.StateSaga.StateMachine
                                 "[TradeStateMachine] Pricing data received for Trade: Id=[{CorrelationId}] TradeId=[{TradeId}]",
                                 context.Instance.CorrelationId,
                                 context.Data.TradeId))
+                    .Then(
+                        context =>
+                            Log.Information(
+                                "[TradeStateMachine] Trade completed: Id=[{CorrelationId}] TradeId=[{TradeId}]",
+                                context.Instance.CorrelationId,
+                                context.Data.TradeId))
                     .TransitionTo(Completed));
 
 
