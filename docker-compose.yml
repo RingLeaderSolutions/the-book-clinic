@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  thebookclinic.pricingservice:
+    image: ${DOCKER_REGISTRY}thebookclinicpricingservice
+    build:
+      context: .\TheBookClinic.PricingService
+      dockerfile: Dockerfile
